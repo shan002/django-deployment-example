@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Website</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            {% if signup_status %}
+                <h3>{{ signup_status }}</h3>
+            {% endif %}
+            <h2>Sign Up</h2>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ userform.as_p }}
+                {{ profileform.as_p }}
+                <input class="btn btn-primary" type="submit" value="Sign Up">
+            </form>
+            <h3><a href="{% url 'blog_app:user_login' %}">Log In</a></h3>
+        </div>
+    </div>
+</body>
+</html>

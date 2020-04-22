@@ -1,0 +1,14 @@
+{% extends 'blog_app/base.html' %}
+{% block body_block %}
+    <a href="{% url 'blog_app:new_post' %}"><h3>Create Post</h3></a>
+    <hr>
+    <hr>
+    {% for post in posts %}
+        <div class='post jumbotron'>
+            <h2>{{ post.author }}</h2>
+            <h5>{{ post.published_date }}</h5>
+            <p>{{ post.post }}</p>
+        </div>
+        <hr>
+    {% endfor %}
+{% endblock %}
